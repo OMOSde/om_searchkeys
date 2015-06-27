@@ -1,0 +1,27 @@
+{
+  "name":"omosde/om_searchkeys",
+  "description":"This Contao module add support to record search requests",
+  "keywords":["contao","backend","tools","support"],
+  "type":"contao-module",
+  "homepage":"http://omos.de",
+  "license":"LGPL-3.0+",
+  "authors":[
+    {
+      "name":"René Fehrmann",
+      "homepage":"http://omos.de",
+      "role":"Developer"
+    }
+  ],
+  "support":{
+    "issues":"https://github.com/OMOSde/om_searchkeys/issues",
+    "source":"https://github.com/OMOSde/om_searchkeys"
+  },
+  "require":{
+    "php":">=5.3",
+    "contao/core":">=3.2,<4",
+    "contao-community-alliance/composer-plugin": "*"
+  },
+  "replace":{
+    "contao-legacy/om_searchkeys":"self.version"
+  }
+}
