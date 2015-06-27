@@ -1,0 +1,108 @@
+/**
+ * Contao module om_searchkeys
+ * 
+ * CSS file
+ * 
+ * @copyright OMOS.de 2015 <http://www.omos.de>
+ * @author    René Fehrmann <rene.fehrmann@omos.de>
+ * @license   http://www.gnu.org/licenses/lgpl-3.0.html LGPL
+ * @package   om_searchkeys
+ */
+
+div.export form#export {
+    float:right;
+}
+div.export form#empty {
+    float:right;
+}
+div.export form#rootPages {
+    position:relative;
+    float:left;
+    padding:0 0 0 10px;
+}
+div.export form#rootPages .styled_select {
+    top:2px !important;
+}
+div.export div.clear {
+    clear:both;
+}
+
+
+div#mod_om_searchkeys {
+    margin:18px;
+}
+div#mod_om_searchkeys div.aside {
+    float:right;
+}
+div#mod_om_searchkeys table {
+    word-wrap:break-word;
+    border-bottom:1px solid #e9e9e9;
+}
+div#mod_om_searchkeys table.last {
+    float:left;
+    width:472px;
+}
+div#mod_om_searchkeys table.last tr.beUser td,
+div#mod_om_searchkeys table.last tr.beUser td a {
+    color:#6185F2;
+}
+div#mod_om_searchkeys table.last tr.feUser td,
+div#mod_om_searchkeys table.last tr.feUser td a {
+    color:#ef7070;
+}
+div#mod_om_searchkeys table.last tr.beUser td a:hover,
+div#mod_om_searchkeys table.last tr.feUser td a:hover {
+    text-decoration:underline;
+}
+div#mod_om_searchkeys table.last .col_1 {
+    text-align:center;
+}
+div#mod_om_searchkeys table.last .col_2 {
+    text-align:center;
+}
+div#mod_om_searchkeys table.last .col_3 {
+    text-align:center;
+}
+div#mod_om_searchkeys table.last .col_4 {
+    text-align:center;
+}
+div#mod_om_searchkeys table.stats {
+    width:200px;
+}
+div#mod_om_searchkeys table.stats .col_1 {
+    width:50px;
+    text-align:center;
+}
+div#mod_om_searchkeys table.top {
+    margin:18px 0 0 0;
+    width:200px;
+}
+div#mod_om_searchkeys table.top .col_1 {
+    width:50px;
+    text-align:center;
+}
+div#mod_om_searchkeys th {
+    margin:18px 0 0 0;
+    padding:2px 6px 3px 6px;
+    border-top:1px solid #e9e9e9;
+    background-color:#f6f6f6;
+}
+div#mod_om_searchkeys td {
+    margin:18px 0 0 0;
+    padding:2px 6px 3px 6px;
+    text-align:center;
+    border-top:1px solid #e9e9e9;
+    background-color:white;
+}
+div#mod_om_searchkeys td.col_0 {
+    text-align:left;
+}
+div#mod_om_searchkeys div.version {
+    margin:18px 0 0 0;
+    padding:2px 6px 3px 6px;
+    color:#6185F2;
+    text-align:right;
+    border-top:1px solid #e9e9e9;
+    border-bottom:1px solid #e9e9e9;
+    background-color:#f6f6f6;
+}

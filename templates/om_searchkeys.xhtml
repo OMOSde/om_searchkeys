@@ -1,0 +1,131 @@
+<div class="tl_panel export">
+    <form action="<?php echo $this->url; ?>" method="post" id="export">
+        <input type="hidden" name="FORM_SUBMIT" value="export" />
+        <input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">
+        <input type="submit" id="ctrl_7" class="submit" value="<?php echo $this->export; ?>"<?php if (!$this->last) echo ' disabled'; ?>>
+    </form>
+    <form action="<?php echo $this->url; ?>" method="post" id="empty">
+        <input type="hidden" name="FORM_SUBMIT" value="emptyTable" />
+        <input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">
+        <input type="submit" id="ctrl_7" class="submit" value="<?php echo $this->emptyTable; ?>" onclick="if (!confirm('<?php echo $this->emptyConfirm; ?>')) return false;" <?php if (!$this->last) echo ' disabled'; ?>>
+    </form>
+    <?php if ($this->rootPages): ?>
+        <form action="<?php echo $this->url; ?>" method="post" id="rootPages">
+            <input type="hidden" name="FORM_SUBMIT" value="rootPages" />
+            <input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">
+                <label for="root"><?php echo $this->root; ?>:</label>
+                <select name="root" onchange="this.form.submit()">
+                    <option value="0"><?php echo $this->allRoots; ?></option>
+                    <?php foreach($this->rootPages as $page): ?>
+                    <option value="<?php echo $page['id']; ?>"<?php if ($this->startpoint == $page['id']) echo ' selected'; ?>><?php echo $page['title']; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </form>
+    <?php endif; ?>
+    <div class="clear"></div>
+</div>
+
+<div id="tl_buttons">
+    <a href="<?php echo $this->href; ?>" class="header_back" title="<?php echo $this->title; ?>"><?php echo $this->button; ?></a>
+</div>
+
+<div id="mod_om_searchkeys">
+    <div class="keywords">
+        <?php if ($this->last) : ?>
+            <table class="last" cellspacing="0" cellpadding="0" border="0">
+                <thead>
+                    <tr>
+                        <th colspan="<?php if ($this->access) { echo '5'; } else { echo '4'; } ?>"><?php echo $this->lastQueries; ?></th>
+                    </tr>
+                    <tr>
+                        <th class="col_0"><?php echo $this->searchterm; ?></th>
+                        <th class="col_1"><?php echo $this->datetime; ?></th>
+                        <th class="col_2"><?php echo $this->result; ?></th>
+                        <th class="col_3">&empty;</th>
+                        <?php if ($this->access) { echo '<th class="col_4">'.$this->member.'</th>'; } ?>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($this->last as $value) { ?>
+                    <tr<?php if ($value['user'] != 0) echo ' class="beUser"'; ?><?php if ($value['member'] != 0) echo ' class="feUser"'; ?>>
+                    <td class="col_0"><?php echo $value['searchkey']; ?></td>
+                    <td class="col_1"><?php echo date('d.m.Y H:i', $value['tstamp']); ?></td>
+                    <td class="col_2"><?php echo $value['results']; ?></td>
+                    <td class="col_3"><?php echo $value['relevance'] . '%'; ?></td>
+                    <?php if ($this->access) : ?>
+                        <td class="col_4">
+                            <?php if ($value['member']) : ?>
+                                <a href="<?php echo $value['link']; ?>" title="<?php echo $value['lastname'] . ', ' . $value['firstname']; ?>"><?php echo $value['username']; ?> (FE)</a>
+                            <?php elseif ($value['user']): ?>
+                                <a href="<?php echo $value['link']; ?>" title="<?php echo $this->user[$value['user']]['name']; ?>"><?php echo $this->user[$value['user']]['username']; ?> (BE)</a>
+                            <?php else: echo 'anonym'; endif; ?>
+                        </td>
+                    <?php endif; ?>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <div class="empty"><?php echo $this->empty; ?></div>
+        <?php endif; ?>
+    </div>
+
+    <div class="aside">
+        <?php if ($this->total && $this->last) : ?>
+            <table class="stats" cellspacing="0" cellpadding="0" border="0">
+                <thead>
+                <tr>
+                    <th colspan="2"><?php echo $this->statistics; ?></th>
+                </tr>
+                <tr>
+                    <th class="col_0"><?php echo $this->selection; ?></th>
+                    <th class="col_1"><?php echo $this->amount; ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="col_0"><?php echo $this->txtTotal; ?></td>
+                    <td class="col_1"><?php echo $this->total; ?></td>
+                </tr>
+                <tr>
+                    <td class="col_0"><?php echo $this->txtMonthly; ?></td>
+                    <td class="col_1"><?php echo $this->monthly; ?></td>
+                </tr>
+                <tr>
+                    <td class="col_0"><?php echo $this->txtWeekly; ?></td>
+                    <td class="col_1"><?php echo $this->weekly; ?></td>
+                </tr>
+                <tr>
+                    <td class="col_0"><?php echo $this->txtDaily; ?></td>
+                    <td class="col_1"><?php echo $this->daily; ?></td>
+                </tr>
+                </tbody>
+            </table>
+        <?php endif; ?>
+
+        <?php if ($this->top) : ?>
+            <table class="top" cellspacing="0" cellpadding="0" border="0">
+                <thead>
+                <tr>
+                    <th colspan="2"><?php echo $this->top20; ?></th>
+                </tr>
+                <tr>
+                    <th class="col_0"><?php echo $this->searchterm; ?></th>
+                    <th class="col_1"><?php echo $this->amount; ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($this->top as $value) { ?>
+                        <tr>
+                            <td class="col_0"><?php echo $value['searchkey']; ?></td>
+                            <td class="col_1"><?php echo $value['count']; ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
+    </div>
+
+    <div class="clear"></div>
+    <div class="version">Modul 'om_searchkeys': 1.0.3 stable</div>
+</div>
