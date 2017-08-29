@@ -266,9 +266,7 @@ class ModuleOmSearch extends ModuleSearch
         // Shorten context and highlight keywords
         if (!empty($arrContext))
         {
-          $this->import('String');
-
-          $objTemplate->context = trim($this->String->substrHtml(implode('…', $arrContext), $this->totalLength));
+          $objTemplate->context = trim(\StringUtil::substrHtml(implode('…', $arrContext), $this->totalLength));
           $objTemplate->context = preg_replace('/(\PL)(' . implode('|', $arrMatches) . ')(\PL)/ui', '$1<span class="highlight">$2</span>$3', $objTemplate->context);
 
           $objTemplate->hasContext = true;
